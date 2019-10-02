@@ -48,16 +48,6 @@ function addTrains(trains) {
 //     weatherDiv.append(iframe);
 // }
 
-// function addSunInfo(sunrise, sunset) {
-//     const sunriseElement = document.createElement("p");
-//     sunriseElement.innerHTML = "Sunrise: " + readableDate(sunrise);
-//     weatherDiv.append(sunriseElement);
-
-//     const sunsetElement = document.createElement("p");
-//     sunsetElement.innerHTML = "Sunset: " + readableDate(sunset);
-//     weatherDiv.append(sunsetElement);
-// }
-
 // function readableDate(unixDate) {
 //     // Use moment.js to convert Unix Date to readable Date
 //     return moment.unix(unixDate).format('MMMM Do YYYY, h:mm:ss a');
