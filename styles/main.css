@@ -6,11 +6,11 @@
     height: 50vh;
     overflow-y: auto;
 }
-.container--train > p, div {
+.container--train > p, .container--train > div {
     padding: .5rem .5rem;
     border: 1px solid black;
     justify-items: start;}
-/* Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
+/*Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
 
 #trackerPage {
     height: 900px;
