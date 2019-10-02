@@ -17,13 +17,20 @@
 #trackerPage {
     height: 900px;
     width:  100%;
-    display:grid;
-    grid-template-columns: 75% 1fr;
+    display: grid;
+    grid-template-rows: 75% 1fr;
     grid-gap: 10px;
 }
-#tweets {
-    height: 900px;
+
+@media screen and (min-width: 768px) {
+    #trackerPage{
+        display:grid;   
+        grid-template-rows: 1fr;
+        grid-template-columns: 75% 1fr;
+        grid-gap: 10px;
+    }
 }
+
 #weatherDiv {
     border: 1px solid black;
     width: 25%;

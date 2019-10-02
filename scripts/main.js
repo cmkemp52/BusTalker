@@ -11,7 +11,6 @@ setInterval(function(){
     updateMap();
 },5000);
 
-
 function updateMap(){
     fetch("http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
@@ -99,6 +98,21 @@ function updateMap(){
         })
         .catch(err=>console.log(err));
 }
+
+$( window ).resize(function() {
+    if($(window).width()>768){
+        $(".twitter-timeline").remove();
+        $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"900\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
+        console.log($(".twitter-timeline").attr("data-width"));
+    }
+    if($(window).width()<768){
+        $(".twitter-timeline").remove();
+        $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"250\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
+        console.log($(".twitter-timeline").attr("data-width"));
+    }
+});
+
+
 function addTemp(temp) {
     const temperatureElement = document.createElement('p');
     temperatureElement.innerHTML = `Temperature: ${temp.toFixed(0)} &#7506;`;
