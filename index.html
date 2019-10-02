@@ -8,21 +8,21 @@
 </head>
 
 <body>
-    
-    <div class="container">
-        <div id="trainContainer" data-train class="container--train">
-                <form id="chuckQuotesForm" action="#">
-                        <h3 class="subtitle">Category List</h3>
-                        <label id="categorySelect">Select a Category</label>
-                        <button type='submit' class="button is-link is-outlined is-normal">Get Quote for this Category</button>
-            <p><strong>Station</strong></p>
-            <p><strong>Line</strong></p>
-            <p><strong>Direction</strong></p>
-            <p><strong>Arrival Time</strong></p>
-            <p><strong>Wait Time</strong></p>
-        </div>
-    </div>
     <div id="mapDiv" style="width: 600px; height: 400px;"></div>
+
+    <div class="container">
+            <form id="trainSelectForm" action="#">
+                    <h3 class="subtitle">Filter List</h3>
+                    <label id="categorySelect">Select a Train</label>
+                    <button type='submit' class="button is-link is-outlined is-normal">Submit</button>
+            <div id="trainContainer" data-train class="container--train">
+                <p><strong>Station</strong></p>
+                <p><strong>Line</strong></p>
+                <p><strong>Direction</strong></p>
+                <p><strong>Arrival Time</strong></p>
+                <p><strong>Wait Time</strong></p>
+            </div>
+        </div>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
     <script src="scripts/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
