@@ -112,7 +112,7 @@ function addSummary(summary) {
 }
 
 function addTime(time) {
-    time = moment.unix(time).format("HH:MM");
+    time = moment.unix(time).format('h:mm a');
     const timeElement = document.createElement('p');
     timeElement.innerHTML = `${time}`; 
     weatherDiv.append(timeElement);
@@ -129,17 +129,17 @@ function addIcon(icon) {
     
     const iconElement = document.createElement('p');
     if (icon == 'clear-day') {
-    iconElement.innerHTML = `<src="images/sun.png">`;
+    iconElement.innerHTML = `<img src="images/sun.png">`;
     weatherDiv.append(iconElement);
     console.log('worked')
     }
     if(icon == "partly-cloudy-day"){
-    iconElement.innerHTML = `<src="images/cloudy.png">`;
+    iconElement.innerHTML = `<img src="images/cloudy.png">`;
     weatherDiv.append(iconElement);
     console.log('worked')
     }
     if(icon == "fog"){
-    iconElement.innerHTML = `src="images/foggy.png">`;
+    iconElement.innerHTML = `<img src="images/foggy.png">`;
     weatherDiv.append(iconElement);
     console.log('worked')
     }
