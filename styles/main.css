@@ -14,8 +14,16 @@
 }
 /* Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
 
-
-
+#trackerPage {
+    height: 900px;
+    width:  100%;
+    display:grid;
+    grid-template-columns: 75% 1fr;
+    grid-gap: 10px;
+}
+#tweets {
+    height: 900px;
+}
 #weatherDiv {
     border: 1px solid black;
     width: 25%;
