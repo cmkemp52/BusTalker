@@ -1,0 +1,14 @@
+.container--train {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 1fr 1.5fr 1.5fr;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    /* min-width: min-content; */
+}
+
+.container--train > p {
+    padding: .5rem .5rem;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    word-wrap: break-word;
+}

@@ -1,8 +1,30 @@
+<!DOCTYPE html>
 <html>
-    <head>
 
-    </head>
-    <body>
+<head>
+    <title>Working with Forms + Weather API</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+</head>
 
-    </body>
+<body>
+    
+    <div class="container">
+        <div id="trainContainer" data-train class="container--train">
+                <form id="chuckQuotesForm" action="#">
+                        <h3 class="subtitle">Category List</h3>
+                        <label id="categorySelect">Select a Category</label>
+                        <button type='submit' class="button is-link is-outlined is-normal">Get Quote for this Category</button>
+            <p><strong>Station</strong></p>
+            <p><strong>Line</strong></p>
+            <p><strong>Direction</strong></p>
+            <p><strong>Arrival Time</strong></p>
+            <p><strong>Wait Time</strong></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./scripts/get.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+
 </html>
