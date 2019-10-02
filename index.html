@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Working with Forms + Weather API</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-</head>
+    <head>
+        <title>Working with Forms + Weather API</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
+    </head>
+    <body>
 
-<body>
     <div id="mapDiv" style="width: 600px; height: 400px;"></div>
-
-    <div class="container">
-            <form id="trainSelectForm" action="#">
-                    <h3 class="subtitle">Filter List</h3>
-                    <label id="categorySelect">Select a Train</label>
-                    <button type='submit' class="button is-link is-outlined is-normal">Submit</button>
-            <div id="trainContainer" data-train class="container--train">
-                <p><strong>Station</strong></p>
-                <p><strong>Line</strong></p>
-                <p><strong>Direction</strong></p>
-                <p><strong>Arrival Time</strong></p>
-                <p><strong>Wait Time</strong></p>
+        <!---------------Weather Updates---------------------->
+        <div class="container">
+            <div id="weatherDiv" data-weather class="container--weather">
+                <h2 class="title"><h2><u>Weather</u></h2>
             </div>
         </div>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
-    <script src="scripts/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./scripts/get.js"></script>
-    <script src="./scripts/trains.js"></script>
-</body>
+        <hr>
+        
+        
+        <!--------Twitter updates---------------------->
+        <div id="tweets">
+            <a class="twitter-timeline" data-lang="en" data-width="300" data-height="200" data-theme="dark" data-link-color="#2B7BB9" href="https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw">Tweets by MARTASERVICE</a> 
+            
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            
+        </div>
 
+        <!-- Train updates -->
+        <div class="container">
+                <form id="trainSelectForm" action="#">
+                        <h3 class="subtitle">Filter List</h3>
+                        <label id="categorySelect">Select a Station</label>
+                        <button type='submit' class="button is-link is-outlined is-normal">Submit</button>
+                <div id="trainContainer" data-train class="container--train">
+                    <div><strong>Station</strong></div>
+                    <div><strong>Line</strong></div>
+                    <div><strong>Direction</strong></div>
+                    <div><strong>Arrival Time</strong></div>
+                    <div><strong>Wait Time</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!----------------------Scripts------------------------------->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="./scripts/get.js"></script>
+        <script src="./scripts/trains.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
 </html>

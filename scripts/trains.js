@@ -1,4 +1,6 @@
 const trainDiv = document.querySelector("[data-train]");
+
+const trainSelectForm = document.querySelector("trainSelectForm")
 // const station = document.getElementById("station");
 // const direction = document.getElementById("direction");
 // const arrivalTime = document.getElementById("arrivalTime");
@@ -19,11 +21,11 @@ function addTrains(trains) {
     // filteredTrains = trains.filter(train => train.LINE === "RED" && train.DIRECTION === "S")
     trainList =  trains.map(train => {
 
-        stationLi = document.createElement("p");
-        lineLi = document.createElement("p");
-        directionLi = document.createElement("p");
-        arrivalTimeLi = document.createElement("p");
-        waitTimeLi = document.createElement("p");
+        stationLi = document.createElement("div");
+        lineLi = document.createElement("div");
+        directionLi = document.createElement("div");
+        arrivalTimeLi = document.createElement("div");
+        waitTimeLi = document.createElement("div");
         stationLi.innerHTML = train.STATION;
         lineLi.innerHTML = train.LINE;
         directionLi.innerHTML = train.DIRECTION;
