@@ -1,0 +1,9 @@
+/* Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
+
+
+.container {
+    border: 1px solid black;
+    width: 25%;
+    text-align: center;
+    background-color: RGB(0,138,198);
+}
