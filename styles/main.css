@@ -1,17 +1,15 @@
 .container--train {
-    /* width: 500px */
-
+    width: auto;
     display: grid;
-    grid-template-columns: repeat(5, minmax(auto, 200px));
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    grid-template-columns: repeat(5, minmax(auto, 1fr));
+    justify-items: stretch;
+    height: 50vh;
+    overflow-y: auto;
 }
-.container--train > p {
+.container--train > p, div {
     padding: .5rem .5rem;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    word-wrap: break-word;
-}
+    border: 1px solid black;
+    justify-items: start;}
 /* Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
 
 #trackerPage {
@@ -40,4 +38,33 @@
 
 .about {
     text-align: center;
+}
+
+
+.mapContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+}
+
+.mapContainer > a{
+    font-size: 150%
+}
+
+.contactInfo {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(5, auto);
+    justify-items: end;
+    justify-content: end;
+}
+.leftFooter {
+    grid-row: 1 / -1;
+}
+
+a:hover {
+    cursor: pointer;
+    color: purple;
 }

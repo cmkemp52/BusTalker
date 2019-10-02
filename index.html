@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title>Bus Talker</title>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
-      <link href="styles/main.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Bus Talker</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Bus Talker</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Bus Talker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                </ul>
+            </div>
+            </nav>
+        <div id="welcome">
+            <div class='about'>
+            <h1><u>Bus Talker</u></h1>
+            <p>Your source for Marta bus and rail updates</p>
         </div>
-      </nav>
-    <div id="welcome">
-      <div class='about'>
-        <h1><u>What We Do</u></h1>
-        <p>Track busses, link schedules, provide service updates</p>
-    </div>
-    <div class="container">
-        <div id="weatherDiv" data-weather class="container--weather">
-            <h2 class="title"><h2><u>Weather</u></h2>
+        <div class="container">
+            <div id="weatherDiv" data-weather class="container--weather">
+                <h2 class="title"><h2><u>Weather</u></h2>
+            </div>
         </div>
     </div>
     </div>
@@ -54,15 +57,38 @@
                 <h3 class="subtitle">Filter List</h3>
                 <label id="categorySelect">Select a Train</label>
                 <button type='submit' class="button is-link is-outlined is-normal">Submit</button>
-        <div id="trainContainer" data-train class="container--train">
-            <p><strong>Station</strong></p>
-            <p><strong>Line</strong></p>
-            <p><strong>Direction</strong></p>
-            <p><strong>Arrival Time</strong></p>
-            <p><strong>Wait Time</strong></p>
+            <div id="trainContainer" data-train class="container--train">
+                <p><strong>Station</strong></p>
+                <p><strong>Line</strong></p>
+                <p><strong>Direction</strong></p>
+                <p><strong>Arrival Time</strong></p>
+                <p><strong>Wait Time</strong></p>
+            </div>
         </div>
-    </div>
-    
+        <div id="fullMapSchedule">
+            <container class="mapContainer">
+                <img src="https://www.itsmarta.com/images/train-stations-map.jpg"/>
+                <img src="https://i2.wp.com/usa.streetsblog.org/wp-content/uploads/sites/5/2017/02/atlanta-map-transit-services.png?w=600&crop=0%2C0px%2C100%2C530px"/>
+                <a href= "https://www.itsmarta.com/bus-routes.aspx">All bus routes and schedules</a>
+                <a href= "https://www.itsmarta.com/train-stations-and-schedules.aspx">All train stations and schedules</a>
+            </container>
+        </div>
+        <footer>
+
+            <container class="contactInfo">
+                
+                <p>Route & Schedule Info:</p>
+                <p>404-848-5000</p>
+                <p>Customer Service:</p>
+                <p>404-848-5000</p>
+                <p>MARTA Police (Non-Emergency):</p>
+                <p>404-848-4900</p>
+                <p>MARTA Police (Emergency):</p>
+                <p>404-848-4911</p>
+                <p>MARTA Mobility:</p>
+                <p>404-848-582</p>
+            </container>
+        </footer>
 
         <!----------------------Scripts------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
