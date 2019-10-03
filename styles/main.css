@@ -13,6 +13,7 @@
 /*Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
 
 #trackerPage {
+    padding-top: 60px;
     height: 900px;
     width:  100%;
     display: grid;
