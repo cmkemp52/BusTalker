@@ -118,6 +118,7 @@ $( window ).resize(function() {
 function addTemp(temp) {
     const temperatureElement = document.createElement('p');
     temperatureElement.innerHTML = `<b>${temp.toFixed(0)} &#7506 F</b>`;
+    temperatureElement.setAttribute('style', 'font-size: 40px;'); 
     timeAndTemp.append(temperatureElement);
 }
         
@@ -125,6 +126,7 @@ function addTemp(temp) {
 function addSummary(summary) {
     const summaryElement = document.createElement('p');
     summaryElement.innerHTML = `${summary}`;
+    summaryElement.setAttribute('style', 'font-weight: bold');
     iconStatus.append(summaryElement);
 }
 
@@ -138,12 +140,14 @@ function addTime(time) {
 function addDate(date) {
     date = moment.unix(date).format('LL');
     const dateElement = document.createElement('p');
-    dateElement.innerHTML = `${date}`; 
+    dateElement.innerHTML = `${date}`;
+    dateElement.setAttribute('style', 'text-decoration: underline');
     weatherNav.append(dateElement);
 }
 function addPrecipitation(precipitation) {
     const precipitationElement = document.createElement('p');
     precipitationElement.innerHTML = `Chance of Rain: ${precipitation} &#37;`;
+    precipitationElement.style.opacity = .5;
     timeAndTemp.append(precipitationElement);
 }
 

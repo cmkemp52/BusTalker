@@ -1,29 +1,29 @@
 /*Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
 :root{
-    --blue: RGB(0,140,204);
-    --yellow: RGB(255,179,0);
-    --orange: RGB(255,117,0);
+    --blue: RGB(186, 184, 184);
+    --yellow: RGB(156, 154, 154);
+    --orange: RGB(122, 121, 121);
 }
 .container{
     max-width: 100%;
 }
 body {
     /* grid-gap: 20px 20px; */
-    background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue))
+    background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue));
 }
 .welcomeContainer {
-
-    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    flex-wrap: wrap;
+    align-items: flex-start;
 
 }
 
 .about {
-    /* text-align: center; */
-    grid-column: 2 / span 1;
-    grid-row: 2/ span 1;
-    font-size: 200%;
-    align-content: center;
-    justify-content: end;
+    width: 60%;
+    justify-content: flex-end;
+    padding-top: 20rem;
 }
 
 .container--weather {
@@ -45,6 +45,22 @@ body {
     padding: 10px;
 }
 
+.split1{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(0,138,198);
+}
+
+.split2{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(255,165,43);
+}
+.split2{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(249,103,40);
+}
 @media screen and (min-width: 768px) {
     #trackerPage{
         display:grid;   
@@ -69,35 +85,9 @@ body {
     /* height: 100vh; */
 }
 #weatherDiv {
-    background-color: RGB(0,138,198) ;
-    width: 25rem;
+    background-color: RGB(0,138,198);
+    width: 50vh;
     border-radius: 10px;
-}
-#weatherNav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 24px;
-    margin: 0 0 0;
-    height: 2rem;
-    padding-top: 1rem;
-}
-#timeAndTemp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#iconStatus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#iconStatus img {
-    width: 5rem;
-    height: 5rem;
 }
 
 #card {
@@ -113,9 +103,32 @@ body {
     border-radius: .25rem;
     justify-content: space-evenly;
     text-align: center;
-
+    padding-top: 10px;
 }
 
+#weatherNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    margin: 0 0 0;
+    height: 2rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid black;
+}
+
+#timeAndTemp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#iconStatus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .about {
     text-align: center;
