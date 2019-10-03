@@ -62,29 +62,14 @@ body {
     width: 100%;
     background-color: RGB(249,103,40);
 }
-@media screen and (min-width: 768px) {
-    #trackerPage{
-        display:grid;   
-        grid-template-rows: 1fr;
-        grid-template-columns: 75% 1fr;
-        grid-gap: 20px;
-    }
-    .nav-item{
-        font-size: 25px;
-        padding-left: 20px;
-    }
-}
+
 
 .nav-item {
     display: flex;
     justify-content: center;
 }
 
-.trainUpdates {
-    background: rgb(204,204,204);
-    margin: 50px;
-    /* height: 100vh; */
-}
+
 #weatherDiv {
     background-color: RGB(0,138,198);
     width: 50vh;
@@ -139,23 +124,35 @@ body {
     text-align: center;
 }
 
+
+.trainUpdates {
+    display: grid;
+    grid-template-columns: 75% 1fr;
+
+    margin: 30px;
+}
 .container--train {
     /* width: auto; */
     display: grid;
-    grid-template-columns: repeat(5, minmax(auto, 1fr));
+    grid-template-columns: 30% repeat(4, minmax(auto, 1fr));
     /* justify-items: stretch; */
     height: 80vh;
     overflow-y: auto;
+    background: rgb(204,204,204);
+
+    
 }
 .container--train > p, .container--train > div {
     padding: .5rem .5rem;
     border: 1px solid black;
-    justify-items: start;
+    justify-content: start;
+    justify-content: start;
 }
 .mapContainer{
     display: grid;
     grid-template-columns: 40% 40%;
-    grid-gap: 20px;
+    /* grid-gap: 20px; */
+    justify-content: space-around;
 
 }
 
@@ -196,4 +193,20 @@ footer li {
     .mapContainer {
         grid-template-columns: auto;
     }
+    .trainUpdates {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (min-width: 768px) {
+    #trackerPage{
+        display:grid;   
+        grid-template-rows: 1fr;
+        grid-template-columns: 75% 1fr;
+        grid-gap: 20px;
+    }
+    .nav-item{
+        font-size: 25px;
+        padding-left: 20px;
+    }
+
 }
