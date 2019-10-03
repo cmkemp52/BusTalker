@@ -8,14 +8,11 @@
     max-width: 100%;
 }
 body {
-    display: grid;
     /* grid-gap: 20px 20px; */
     background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue))
 }
 .welcomeContainer {
-    display:grid;
-    grid-template-columns: 30% auto;
-    grid-template-rows: 30% auto;
+
     height: 100vh;
 
 }
@@ -70,6 +67,58 @@ body {
     background: rgb(204,204,204);
     margin: 50px;
     /* height: 100vh; */
+}
+#weatherDiv {
+    background-color: RGB(0,138,198) ;
+    width: 25rem;
+    border-radius: 10px;
+}
+#weatherNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    margin: 0 0 0;
+    height: 2rem;
+    padding-top: 1rem;
+}
+#timeAndTemp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#iconStatus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#iconStatus img {
+    width: 5rem;
+    height: 5rem;
+}
+
+#card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: row;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #e0d6d5;
+    background-clip: border-box;
+    border-radius: .25rem;
+    justify-content: space-evenly;
+    text-align: center;
+
+}
+
+
+.about {
+    text-align: center;
 }
 
 .container--train {
