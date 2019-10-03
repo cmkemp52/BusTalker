@@ -9,21 +9,20 @@
 }
 body {
     /* grid-gap: 20px 20px; */
-    background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue))
 }
-.welcomeContainer {
-
+#welcome {
+    padding-top: 95px;
     height: 100vh;
-
+    background: rgb(0,146,208);
+    background: rgb(0,146,208);
+    background: linear-gradient(302deg, rgba(0,146,208,1) 0%, rgba(0,146,208,1) 29%, rgba(253,190,67,1) 40%, rgba(253,190,67,1) 62%, rgba(255,117,0,1) 70%, rgba(255,117,0,1) 79%);
 }
 
 .about {
-    /* text-align: center; */
-    grid-column: 2 / span 1;
-    grid-row: 2/ span 1;
+    /* text-align: center; */ 
     font-size: 200%;
     align-content: center;
-    justify-content: end;
+    justify-content: center;
 }
 
 .container--weather {
@@ -35,14 +34,15 @@ body {
     align-content: start;
     justify-content: start;
 }
+
+
 #trackerPage {
-    padding-top: 60px;
+    padding-top: 95px;
     height: 100vh;
     width:  100%;
     display: grid;
     grid-template-rows: 75% 1fr;
     grid-gap: 20px;
-    padding: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -115,7 +115,9 @@ body {
     text-align: center;
 
 }
-
+#trainPage{
+    padding-top: 95px;
+}
 
 .about {
     text-align: center;
@@ -128,8 +130,6 @@ body {
     /* justify-items: stretch; */
     height: 80vh;
     overflow-y: auto;
-
-    
 }
 .container--train > p, .container--train > div {
     padding: .5rem .5rem;
@@ -152,25 +152,31 @@ body {
     width: 100%;
 }
 
-.contactInfo {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: auto auto;
-    grid-template-rows: repeat(5, auto);
-    justify-items: end;
-    justify-content: end;
-    padding: 20px;
-}
-
-.contactInfo h3 {
-    grid-column: 1 / -1;
-}
-
 a:hover {
     cursor: pointer;
 }
 
+
+footer {
+    border-top: 3px solid black;
+    background-color: darkgrey;
+}
+
+footer ul{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+footer li {
+    width: 260px;
+    margin-left:3px;
+}
 @media (max-width: 768px) {
+    footer li{
+        width: 400px;
+        font-size: 20px;
+    }
     .mapContainer {
         grid-template-columns: auto;
     }
