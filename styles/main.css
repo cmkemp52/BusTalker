@@ -1,23 +1,50 @@
-.container--train {
-    width: auto;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(auto, 1fr));
-    justify-items: stretch;
-    height: 50vh;
-    overflow-y: auto;
-}
-.container--train > p, .container--train > div {
-    padding: .5rem .5rem;
-    border: 1px solid black;
-    justify-items: start;}
 /*Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
+:root{
+    --blue: RGB(0,140,204);
+    --yellow: RGB(255,179,0);
+    --orange: RGB(255,117,0);
+}
+.container{
+    max-width: 100%;
+}
+body {
+    display: grid;
+    /* grid-gap: 20px 20px; */
+    background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue))
+}
+.welcomeContainer {
+    display:grid;
+    grid-template-columns: 30% auto;
+    grid-template-rows: 30% auto;
+    height: 100vh;
 
+}
+
+.about {
+    /* text-align: center; */
+    grid-column: 2 / span 1;
+    grid-row: 2/ span 1;
+    font-size: 200%;
+    align-content: center;
+    justify-content: end;
+}
+
+.container--weather {
+    border: 1px solid black;
+    /* width: 30%; */
+    /* height: 50%; */
+    text-align: center;
+    background-color: RGB(0,138,198);
+    align-content: start;
+    justify-content: start;
+}
 #trackerPage {
     height: 900px;
     width:  100%;
     display: grid;
     grid-template-rows: 75% 1fr;
-    grid-gap: 10px;
+    grid-gap: 20px;
+    padding: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -25,31 +52,46 @@
         display:grid;   
         grid-template-rows: 1fr;
         grid-template-columns: 75% 1fr;
-        grid-gap: 10px;
+        grid-gap: 20px;
     }
+
 }
 
-#weatherDiv {
+.trainUpdates {
+    background: rgb(204,204,204);
+    margin: 50px;
+    /* height: 100vh; */
+}
+
+.container--train {
+    /* width: auto; */
+    display: grid;
+    grid-template-columns: repeat(5, minmax(auto, 1fr));
+    /* justify-items: stretch; */
+    height: 80vh;
+    overflow-y: auto;
+
+    
+}
+.container--train > p, .container--train > div {
+    padding: .5rem .5rem;
     border: 1px solid black;
-    width: 25%;
-    text-align: center;
-    background-color: RGB(0,138,198);
+    justify-items: start;
 }
-
-.about {
-    text-align: center;
-}
-
-
 .mapContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+    grid-template-columns: 40% 40%;
+    grid-gap: 20px;
 
 }
 
 .mapContainer > a{
-    font-size: 150%
+    font-size: 150%;
+    color: darkblue;
+}
+
+#busMap {
+    width: 100%;
 }
 
 .contactInfo {
@@ -59,12 +101,19 @@
     grid-template-rows: repeat(5, auto);
     justify-items: end;
     justify-content: end;
+    padding: 20px;
 }
-.leftFooter {
-    grid-row: 1 / -1;
+
+.contactInfo h3 {
+    grid-column: 1 / -1;
 }
 
 a:hover {
     cursor: pointer;
-    color: purple;
+}
+
+@media (max-width: 768px) {
+    .mapContainer {
+        grid-template-columns: auto;
+    }
 }
