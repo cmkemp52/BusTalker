@@ -115,62 +115,98 @@ $( window ).resize(function() {
 
 function addTemp(temp) {
     const temperatureElement = document.createElement('p');
-    temperatureElement.innerHTML = `Temperature: ${temp.toFixed(0)} &#7506;`;
-    weatherDiv.append(temperatureElement)
+    temperatureElement.innerHTML = `<b>${temp.toFixed(0)} &#7506 F</b>`;
+    timeAndTemp.append(temperatureElement);
 }
+        
 
 function addSummary(summary) {
     const summaryElement = document.createElement('p');
     summaryElement.innerHTML = `${summary}`;
-    weatherDiv.append(summaryElement);
+    iconStatus.append(summaryElement);
 }
 
 function addTime(time) {
     time = moment.unix(time).format('h:mm a');
     const timeElement = document.createElement('p');
-    timeElement.innerHTML = `${time}`; 
-    weatherDiv.append(timeElement);
+    timeElement.innerHTML = `<b>NOW ${time}<b>`; 
+    timeAndTemp.append(timeElement);
 }
 
+function addDate(date) {
+    date = moment.unix(date).format('LL');
+    const dateElement = document.createElement('p');
+    dateElement.innerHTML = `${date}`; 
+    weatherNav.append(dateElement);
+}
 function addPrecipitation(precipitation) {
     const precipitationElement = document.createElement('p');
-    precipitationElement.innerHTML = `Precipitation probability: ${precipitation}`;
-    weatherDiv.append(precipitationElement);
+    precipitationElement.innerHTML = `Chance of Rain: ${precipitation} &#37;`;
+    timeAndTemp.append(precipitationElement);
 }
 
 function addIcon(icon) {
-    //// Will be switch statement//////
+    // clear-day, clear-night, partly-cloudy-day,partly-cloudy-night,cloudy,rain,sleet,snow,wind,fog
     
     const iconElement = document.createElement('p');
-    if (icon == 'clear-day') {
-    iconElement.innerHTML = `<img src="images/sun.png">`;
-    weatherDiv.append(iconElement);
-    }
-    if(icon == "partly-cloudy-day"){
-    iconElement.innerHTML = `<img src="images/cloudy.png">`;
-    weatherDiv.append(iconElement);
-    }
-    if(icon == "fog"){
-    iconElement.innerHTML = `<img src="images/foggy.png">`;
-    weatherDiv.append(iconElement);
-    }
-    if(icon == "partly-cloudy-night") {
-    iconElement.innerHTML = `<img src="images/sun-weather.gif" height="100px" width=“200px" class='sun'>`;
-    weatherDiv.append(iconElement);
-    }
+    switch(icon) {
+        case "clear-day":
+            iconElement.innerHTML = `<img src="weatherIcons/sun.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "clear-night":
+            iconElement.innerHTML = `<img src="weatherIcons/moon.png.png">`;
+            iconStatus.append(iconElement);
+            break;
+        case "partly-cloudy-day":
+            iconElement.innerHTML = `<img src="weatherIcons/cloudyDay.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "clear-partly-cloudy-night":
+            iconElement.innerHTML = `<img src="weatherIcons/cloudymoon.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "cloudy":
+            iconElement.innerHTML = `<img src="weatherIcons/cloudyDay.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "rain":
+            iconElement.innerHTML = `<img src="images/rain.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "sleet":
+            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "snow":
+            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "wind":
+            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconStatus.append(iconElement);
+          break;
+        case "fog":
+            iconElement.innerHTML = `<img src="images/sun.png">`;
+            iconStatus.append(iconElement);
+          break;
+        default:
+            iconElement.innerHTML = `<img src="images/sun.png">`;
+            iconStatus.append(iconElement);
+      }
 }
 
 function getWeather(icon) {
     const URL = `https://api.darksky.net/forecast/1010d61071e3e5e3e99eed847a82272c/33.7490,-84.3880`;
 
     get(URL).then(function(response) {
-        addIcon(response.minutely.icon);
-        addTemp(response.currently.temperature);
-        addSummary(response.hourly.summary);
         addTime(response.currently.time);
+        addDate(response.currently.time);
+        addTemp(response.currently.temperature);
         addPrecipitation(response.currently.precipProbability);
+        addIcon(response.minutely.icon);
+        addSummary(response.hourly.summary);
+        console.log(response);
     });
 }
-getWeather()
-
-/// clear-day, clear-night, partly-cloudy-day,partly-cloudy-night,cloudy,rain,sleet,snow,wind,fog
+getWeather();
