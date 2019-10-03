@@ -28,6 +28,10 @@
         grid-template-columns: 75% 1fr;
         grid-gap: 10px;
     }
+    .nav-item{
+        font-size: 25px;
+        padding-left: 20px;
+    }
 }
 
 .nav-item {

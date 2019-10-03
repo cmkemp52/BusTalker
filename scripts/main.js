@@ -101,11 +101,13 @@ function updateMap(){
 
 $( window ).resize(function() {
     if($(window).width()>768){
+        $(".navbar-brand").attr("src","images/bustalker.png");
         $(".twitter-timeline").remove();
         $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"900\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
         console.log($(".twitter-timeline").attr("data-width"));
     }
     if($(window).width()<768){
+        $(".navbar-brand").attr("src","images/bustalkersmall.png");
         $(".twitter-timeline").remove();
         $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"250\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
         console.log($(".twitter-timeline").attr("data-width"));
