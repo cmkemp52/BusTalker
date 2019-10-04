@@ -239,8 +239,9 @@ body {
 }
 
 #scheduleButton {
-    background-color: var(--blue);
-    color: var(--yellow);
+    background-color: var(--yellow);
+    color: var(--blue);
+    font-weight: bold;
     width: 200px;
     height: 100px;
     border-radius: 10px;
