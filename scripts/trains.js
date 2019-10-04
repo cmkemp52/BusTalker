@@ -20,13 +20,14 @@ trainUpdateButton.addEventListener("click", function(e) {
 function addTrains(trains) {
     // filteredTrains = trains.filter(train => train.STATION === "CHAMBLEE STATION")
     // && train.LINE === "RED" && train.DIRECTION === "S")
-        trainDiv.innerHTML = "<p><strong>Station</strong></p><p><strong>Line</strong></p><p><strong>Direction</strong></p><p><strong>Arrival Time</strong></p><p><strong>Wait Time</strong></p>"
+        trainDiv.innerHTML = "<p><strong>Station</strong></p><p><strong>Line</strong></p><p><strong>Dir.</strong></p><p id='arrivalTime'><strong>Arrival Time</strong></p><p><strong>Wait Time</strong></p>"
         trainList =  trains.map(train => {
 
         stationLi = document.createElement("div");
         lineLi = document.createElement("div");
         directionLi = document.createElement("div");
         arrivalTimeLi = document.createElement("div");
+        arrivalTimeLi.setAttribute('id', 'arrivalTime')
         waitTimeLi = document.createElement("div");
 
         trainDiv.append(stationLi);
