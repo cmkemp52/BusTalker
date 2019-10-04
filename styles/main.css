@@ -190,6 +190,7 @@ body {
 */
 
 .trainUpdates {
+    padding-top: 95px;
     display: grid;
     grid-template-columns: 75% 1fr;
     margin: 30px;
@@ -215,21 +216,31 @@ body {
     border: 1px solid black;
 
 }
-.mapContainer{
-    display: grid;
-    grid-template-columns: 40% 40%;
-    /* grid-gap: 20px; */
-    justify-content: space-around;
 
+/* 
+    ====================
+        Map Page 
+  ======================== 
+ 
+*/
+
+#buttonDiv{
+    width:100%;
+    display: flex;
+    justify-content: center;
 }
 
-.mapContainer > a{
-    font-size: 150%;
-    color: darkblue;
-}
-
-#busMap {
-    width: 100%;
+#scheduleButton {
+    background-color: var(--blue);
+    color: var(--yellow);
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    border: 3px solid var(--orange);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 a:hover {
@@ -302,12 +313,10 @@ footer li {
         width: 400px;
         font-size: 20px;
     }
-    .mapContainer {
-        grid-template-columns: auto;
-    }
     .trainUpdates {
         grid-template-columns: 1fr;
     }
+
 }
 @media screen and (min-width: 768px) {
     #trackerPage{
@@ -326,5 +335,30 @@ footer li {
     }
     #tweets {
         margin-right: 10px;
+    }
+    #fullMapSchedule{
+        padding-top: 95px; 
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 48% 48%;
+        grid-auto-flow: row;
+        justify-content: center;
+    }
+    #map1{
+        width: 100%;
+        max-width: 600px;
+        border: 2px solid black;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #map2{
+        width: 100%;
+        max-width: 600px;
+        order: -1;
+        border: 2px solid black;
+        margin: 2px;
     }
 }
