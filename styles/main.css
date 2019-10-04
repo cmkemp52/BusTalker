@@ -170,8 +170,7 @@ body {
 */
 
 #trackerPage {
-    padding-top: 95px;
-    height: 100vh;
+    height: 85vh;
     width:  100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -200,7 +199,6 @@ body {
 */
 
 .trainUpdates {
-    padding-top: 95px;
     display: grid;
     grid-template-columns: 75% 1fr;
     margin: 20px;
@@ -238,6 +236,7 @@ body {
     width:100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 5px;
 }
 
 #scheduleButton {
@@ -362,10 +361,8 @@ footer li {
         margin-right: 10px;
     }
     #fullMapSchedule{
-        padding-top: 95px; 
-        height: 100vh;
         display: grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: auto;
         grid-template-columns: 48% 48%;
         grid-auto-flow: row;
         justify-content: center;
@@ -384,7 +381,7 @@ footer li {
         max-width: 600px;
         order: -1;
         border: 2px solid black;
-        margin: 2px;
+        margin: 5px;
     }
 }
 
