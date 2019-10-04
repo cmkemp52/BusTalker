@@ -1,4 +1,4 @@
-const mymap = L.map('mapDiv').setView([33.75, -84.38],12);
+const mymap = L.map('mapDiv',{center: [33.75, -84.38], zoom: 12, minZoom:12, maxZoom:16, scrollWheelZoom: false});
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY21rZW1wNTIiLCJhIjoiY2sxN3czcWZ0MWw4aDNicWQ5ZGk3ZGRiciJ9.TmrrAvuGokXxLMhoa96krg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 	maxZoom: 18,
@@ -15,7 +15,19 @@ function updateMap(){
     fetch("http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
         .then(function(jsondata){
+            let busLate = 0;
+            let busEarly = 0;
+            let busOnTime = 0;
             for(bus in jsondata){
+                if(jsondata[bus].ADHERENCE >0){
+                    busLate++;
+                }
+                if(jsondata[bus].ADHERENCE <0){
+                    busEarly++;
+                }
+                if(jsondata[bus].ADHERENCE ==0){
+                    busOnTime++;
+                }
                 switch(jsondata[bus].DIRECTION){
                     case "Northbound":
                             mymap.eachLayer(function(tlayer){
@@ -95,6 +107,30 @@ function updateMap(){
                             break;
                 }
             }
+            busLatePercent = (busLate/(busLate+busEarly+busOnTime))*100
+            busEarlyPercent = (busEarly/(busLate+busEarly+busOnTime))*100
+            busOnTimePercent = (busOnTime/(busLate+busEarly+busOnTime))*100
+            CanvasJS.addColorSet("martaColors",["#0092D0","#FDBE43","#FF7500"]);
+            chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: false,
+                colorSet: 'martaColors',
+                backgroundColor: "#9E9C9C",
+                title: {
+                    text: "How late Marta is running"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: [
+                        {y: busLatePercent, label: "Late Buses"},
+                        {y: busEarlyPercent, label: "Early Buses"},
+                        {y: busOnTimePercent, label: "On Time Buses"},
+                    ]
+                }]
+            });
+            chart.render();
         })
         .catch(err=>console.log(err));
 }
@@ -103,14 +139,12 @@ $( window ).resize(function() {
     if($(window).width()>768){
         $(".navbar-brand").attr("src","images/bustalker.png");
         $(".twitter-timeline").remove();
-        $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"900\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
-        console.log($(".twitter-timeline").attr("data-width"));
+        $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"420\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
     }
     if($(window).width()<768){
         $(".navbar-brand").attr("src","images/bustalkersmall.png");
         $(".twitter-timeline").remove();
         $("#tweets").append("<a class=\"twitter-timeline\" data-lang=\"en\" data-width=\"900\" data-height=\"250\" data-theme=\"dark\" data-link-color=\"#2B7BB9\" href=\"https://twitter.com/MARTASERVICE?ref_src=twsrc%5Etfw\">Tweets by MARTASERVICE</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>");
-        console.log($(".twitter-timeline").attr("data-width"));
     }
 });
 
