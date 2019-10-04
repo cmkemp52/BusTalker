@@ -183,6 +183,11 @@ body {
 
     margin: 30px;
 }
+
+#trainSelectForm > .button {
+
+    margin-bottom: 10px;
+}
 .container--train {
     /* width: auto; */
     display: grid;
@@ -191,14 +196,13 @@ body {
     height: 80vh;
     overflow-y: auto;
     background: rgb(204,204,204);
-
+    align-content: start;
     
 }
 .container--train > p, .container--train > div {
     padding: .5rem .5rem;
     border: 1px solid black;
-    justify-content: start;
-    justify-content: start;
+
 }
 .mapContainer{
     display: grid;

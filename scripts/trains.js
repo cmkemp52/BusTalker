@@ -1,6 +1,8 @@
 const trainDiv = document.querySelector("[data-train]");
 
-const trainSelectForm = document.querySelector("trainSelectForm")
+const trainUpdateButton = document.querySelector(".button");
+const stationSelect = document.querySelector(".stationSelect");
+const URL = `http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=38713de0-2f9d-4c15-a510-533e53718c3e`;
 // const station = document.getElementById("station");
 // const direction = document.getElementById("direction");
 // const arrivalTime = document.getElementById("arrivalTime");
@@ -10,14 +12,10 @@ const trainSelectForm = document.querySelector("trainSelectForm")
 // const input = document.querySelector(".input");
 // const formButton = trainSelectForm.querySelector("button");
 
-// formButton.addEventListener("click", function(e) {
-//     e.preventDefault();
-// //     const newLocation = input.value;
-// //     getWeather(newLocation);
-// //     console.log(newLocation);
-// });
-
-
+trainUpdateButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    getTrains();
+});
 
 function addTrains(trains) {
     // filteredTrains = trains.filter(train => train.STATION === "CHAMBLEE STATION")
@@ -31,7 +29,6 @@ function addTrains(trains) {
         arrivalTimeLi = document.createElement("div");
         waitTimeLi = document.createElement("div");
 
-   
         trainDiv.append(stationLi);
         trainDiv.append(lineLi);
         trainDiv.append(directionLi);
@@ -44,21 +41,51 @@ function addTrains(trains) {
         arrivalTimeLi.innerHTML = train.NEXT_ARR;
         waitTimeLi.innerHTML = train.WAITING_TIME;
     
-        lineLi.style.color = lineLi.innerHTML;
-        
+        lineLi.style.color = lineLi.innerHTML;        
     });    
 }
 
+function addStationList(trains) {
+    stationSelect.innerHTML = "<option>All Stations</option>"
+    stationList = trains.map(train => {
+        return train.STATION;
+    });
+
+    filteredStationList = [...new Set(stationList)].sort();
+
+    filteredStationList.forEach(station => {
+        stationName = document.createElement("option");
+        stationName.innerHTML = station;
+        stationSelect.append(stationName);
+    })
+};
+
 function getTrains() {
-    const URL = `http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=38713de0-2f9d-4c15-a510-533e53718c3e`;
     get(URL).then(function(response) {
         addTrains(response);
+        addStationList(response);
     });
     
 }
 
+stationSelect.onchange = (function() {
+    // stationSelect.addEventListener("input", function(e) {
+    //     // e.preventDefault();
+        let stationValue = stationSelect.value;
+        // console.log(stationValue);
+        if (stationValue === 'All Stations') {
+            return getTrains();
+        };
+        get(URL).then(function(response) {
+            const filteredTrains = response.filter(train => train.STATION === stationValue);
+            // console.log(filteredTrains);
+            addTrains(filteredTrains);
+        });
+    });
+// });
+
 getTrains();
 
-setInterval(function(){
-    getTrains();
-},5000);
+// setInterval(function(){
+//     getTrains();
+// },5000);
