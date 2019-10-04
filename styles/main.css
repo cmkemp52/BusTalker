@@ -11,19 +11,56 @@ body {
     /* grid-gap: 20px 20px; */
     background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue));
 }
+
+.home-background {
+    background-image: url('../images/architecture-bench-blur-136739 (1).jpg');
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    padding-right: 0;
+    background-position: center;
+    background-size: cover;
+}
+.home-background:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+}
+
 .welcomeContainer {
     display: flex;
     flex-direction: row;
     height: 80vh;
     flex-wrap: wrap;
     align-items: flex-start;
-
 }
 
+
 .about {
+    flex-direction: column;
     width: 60%;
-    justify-content: flex-end;
-    padding-top: 20rem;
+    padding-top: 15rem;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.about button {
+    border: 1px solid black;
+    border-radius: 100px;
+    background-color: black;
+    margin-top: 1rem;
+    width: 20%;
+    height: 2rem;
+    font-size: .9rem;
+}
+
+.about hr {
+    width: 10%; 
+    margin: auto;
 }
 
 .container--weather {
@@ -35,6 +72,16 @@ body {
     align-content: start;
     justify-content: start;
 }
+
+/* .container--weather:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+} */
 
 
 #trackerPage {
@@ -57,12 +104,17 @@ body {
     width: 100%;
     background-color: RGB(255,165,43);
 }
-.split2{
+.split3{
     height: 6rem;
     width: 100%;
     background-color: RGB(249,103,40);
 }
 
+.split4 {
+    height: 1rem;
+    width: 100%;
+    background-color: black;
+}
 
 .nav-item {
     display: flex;

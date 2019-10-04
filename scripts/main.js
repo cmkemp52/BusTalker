@@ -161,7 +161,7 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "clear-night":
-            iconElement.innerHTML = `<img src="weatherIcons/moon.png.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/moon.png">`;
             iconStatus.append(iconElement);
             break;
         case "partly-cloudy-day":
@@ -177,7 +177,7 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "rain":
-            iconElement.innerHTML = `<img src="images/rain.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/rain.png">`;
             iconStatus.append(iconElement);
           break;
         case "sleet":
@@ -216,3 +216,13 @@ function getWeather(icon) {
     });
 }
 getWeather();
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
