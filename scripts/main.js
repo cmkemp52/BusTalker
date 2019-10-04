@@ -1,3 +1,7 @@
+////////////////////////////////
+//// Bus Map Functionality ////
+//////////////////////////////
+
 const mymap = L.map('mapDiv').setView([33.75, -84.38],12);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY21rZW1wNTIiLCJhIjoiY2sxN3czcWZ0MWw4aDNicWQ5ZGk3ZGRiciJ9.TmrrAvuGokXxLMhoa96krg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -99,6 +103,10 @@ function updateMap(){
         .catch(err=>console.log(err));
 }
 
+////////////////////////////////////
+//// Twitter and Icon Resizing ////
+//////////////////////////////////
+
 $( window ).resize(function() {
     if($(window).width()>768){
         $(".navbar-brand").attr("src","images/bustalker.png");
@@ -115,10 +123,14 @@ $( window ).resize(function() {
 });
 
 
+///////////////////////////////////
+//// Weather App Functionality ////
+//////////////////////////////////
+
 function addTemp(temp) {
     const temperatureElement = document.createElement('p');
     temperatureElement.innerHTML = `<b>${temp.toFixed(0)} &#7506 F</b>`;
-    temperatureElement.setAttribute('style', 'font-size: 40px;'); 
+    temperatureElement.setAttribute('style', 'font-size: 40px; font-weight: bold;'); 
     timeAndTemp.append(temperatureElement);
 }
         
@@ -126,15 +138,16 @@ function addTemp(temp) {
 function addSummary(summary) {
     const summaryElement = document.createElement('p');
     summaryElement.innerHTML = `${summary}`;
-    summaryElement.setAttribute('style', 'font-weight: bold');
+    summaryElement.setAttribute('style', 'font-weight: bold; font-size: 1rem;');
     iconStatus.append(summaryElement);
 }
 
 function addTime(time) {
     time = moment.unix(time).format('h:mm a');
     const timeElement = document.createElement('p');
-    timeElement.innerHTML = `<b>NOW ${time}<b>`; 
-    timeAndTemp.append(timeElement);
+    timeElement.innerHTML = `<b>NOW ${time}<b>`;
+    timeElement.setAttribute('style', 'opacity: .5; font-size: 1rem;') 
+    iconStatus.append(timeElement);
 }
 
 function addDate(date) {
@@ -142,12 +155,12 @@ function addDate(date) {
     const dateElement = document.createElement('p');
     dateElement.innerHTML = `${date}`;
     dateElement.setAttribute('style', 'text-decoration: underline');
-    weatherNav.append(dateElement);
+    timeAndTemp.append(dateElement);
 }
 function addPrecipitation(precipitation) {
     const precipitationElement = document.createElement('p');
     precipitationElement.innerHTML = `Chance of Rain: ${precipitation} &#37;`;
-    precipitationElement.style.opacity = .5;
+    precipitationElement.setAttribute('style', 'opacity: .5; font-size: 1rem;') 
     timeAndTemp.append(precipitationElement);
 }
 
@@ -157,35 +170,35 @@ function addIcon(icon) {
     const iconElement = document.createElement('p');
     switch(icon) {
         case "clear-day":
-            iconElement.innerHTML = `<img src="weatherIcons/sun.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
           break;
         case "clear-night":
-            iconElement.innerHTML = `<img src="weatherIcons/moon.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
             break;
         case "partly-cloudy-day":
-            iconElement.innerHTML = `<img src="weatherIcons/cloudyDay.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
           break;
         case "clear-partly-cloudy-night":
-            iconElement.innerHTML = `<img src="weatherIcons/cloudymoon.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
           break;
         case "cloudy":
-            iconElement.innerHTML = `<img src="weatherIcons/cloudyDay.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
           break;
         case "rain":
-            iconElement.innerHTML = `<img src="weatherIcons/rain.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/cloudyrain.png">`;
             iconStatus.append(iconElement);
           break;
         case "sleet":
-            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/snow.png">`;
             iconStatus.append(iconElement);
           break;
         case "snow":
-            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/snow.png">`;
             iconStatus.append(iconElement);
           break;
         case "wind":
@@ -193,7 +206,7 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "fog":
-            iconElement.innerHTML = `<img src="images/sun.png">`;
+            iconElement.innerHTML = `<img src="images/cloudy.png">`;
             iconStatus.append(iconElement);
           break;
         default:
@@ -206,8 +219,8 @@ function getWeather(icon) {
     const URL = `https://api.darksky.net/forecast/1010d61071e3e5e3e99eed847a82272c/33.7490,-84.3880`;
 
     get(URL).then(function(response) {
-        addTime(response.currently.time);
-        addDate(response.currently.time);
+        // addTime(response.currently.time);
+        // addDate(response.currently.time);
         addTemp(response.currently.temperature);
         addPrecipitation(response.currently.precipProbability);
         addIcon(response.minutely.icon);
@@ -216,6 +229,10 @@ function getWeather(icon) {
     });
 }
 getWeather();
+
+////////////////////////////////
+//// Smooth Scroll on Divs ////
+//////////////////////////////
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
