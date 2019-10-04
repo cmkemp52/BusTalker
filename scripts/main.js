@@ -258,7 +258,7 @@ function getWeather(icon) {
         addTemp(response.currently.temperature);
         addPrecipitation(response.currently.precipProbability);
         addIcon(response.minutely.icon);
-        addSummary(response.hourly.summary);
+        // addSummary(response.hourly.summary);
         console.log(response);
     });
 }
