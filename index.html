@@ -9,8 +9,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="styles/main.css" rel="stylesheet">
     </head>
+
     <body>
-      <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
+                    <!----- Top Sticky NavBar ----->
+
+        <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
         <img class="navbar-brand" src="images/bustalker.png" /> 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="navbar-toggler-icon"></span>
@@ -32,31 +35,37 @@
           </ul>
         </div>
       </nav>
+
+      <!--------Home Landing Page--------->
+
     <div class=home-background>
       <container class="container">
     <div class= "container" id="welcome">
         <div class="welcomeContainer">
             <div id="weatherDiv" data-weather class="container--weather">
-            <div id="weatherNav">
-                <p><u>Atlanta</u></p>
-                </div>
+                    <!-- <p><b>Atlanta, GA</b></p> -->
+            
                 <div id="card">
-            <div id="timeAndTemp">
+                    <div id="timeAndTemp">
+                            <p><b>Atlanta, GA</b></p>
+                    </div>
+                    <div id="iconStatus"></div>
+                </div>
             </div>
-            <div id="iconStatus">
-            </div>
-            </div>
-            </div>
-            <div class="about">
-                <h1><b>Bus Talker</b></h1>
-                <p>Instant Marta and Rail Tracking</p>
-                <hr>
-                <p><button><a href="#trackerPage">Start Tracking</a></button></p>
+                <div class="about">
+                    <h1><b>Bus Talker</b></h1>
+                    <p>Instant Marta and Rail Tracking</p>
+                    <hr>
+                    <p><button><a href="#trackerPage">Start Tracking</a></button></p>
+                </div>
             </div>
         </div>
-     </div>
     </div>
-     <div class="split1"></div>
+</div>
+    <div class="split1"></div>
+
+     <!------- Bus Tracking Page ------->
+
     <div class="" id="trackerPage">
       <div id="mapDiv" ></div>
       <div id="tweets">
@@ -66,6 +75,9 @@
       </div>
     </div>
     <div class="split2"></div>
+
+    <!------- Train Updates Table ------->
+
     <div class="trainUpdates" id="trainPage">
         <form id="trainSelectForm" action="#">
                 <h3 class="subtitle">Live Rail Updates</h3>
@@ -85,6 +97,9 @@
             </div>
     </div>
     <div class="split3"></div>
+
+            <!------ Bus Routes and Schedules ------>
+
         <div  id="fullMapSchedule">
             <container class="mapContainer">
                     <img id= "busMap" src="https://i2.wp.com/usa.streetsblog.org/wp-content/uploads/sites/5/2017/02/atlanta-map-transit-services.png?w=600&crop=0%2C0px%2C100%2C530px"/>
@@ -95,6 +110,9 @@
             </container>
         </div>
         <div class="split4"></div>
+
+        <!----- Footer ----->
+
         <footer>
           <nav>
             <ul>
@@ -117,7 +135,9 @@
         </footer>
     </container>
     </div>
+
         <!----------------------Scripts------------------------------->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
@@ -127,5 +147,7 @@
     <script src="./scripts/get.js"></script>
     <script src="./scripts/trains.js"></script>
     <script src="scripts/main.js"></script>
+
   </body>
+
 </html>

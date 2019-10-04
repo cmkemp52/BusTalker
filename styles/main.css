@@ -1,4 +1,12 @@
 /*Marta Colors Blue RGB(0,138,198) yellow RGB(255,165,43) orange RGB(249,103,40) */
+
+/* 
+    ====================
+      Body Background
+  ======================== 
+ 
+*/
+
 :root{
     --blue: RGB(186, 184, 184);
     --yellow: RGB(156, 154, 154);
@@ -12,8 +20,41 @@ body {
     background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue));
 }
 
+
+/* 
+    ====================
+    Navigation
+    ======================== 
+    
+    */
+    
+    .nav {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-item {
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+/* 
+    ====================
+      Home Background
+  ======================== 
+ 
+*/
+.welcomeContainer {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
 .home-background {
-    background-image: url('../images/architecture-bench-blur-136739 (1).jpg');
+    background-image: url('../images/busStop.jpg');
     background-repeat: repeat;
     width: 100%;
     height: 100%;
@@ -31,14 +72,12 @@ body {
     background: rgba(0,0,0,0.7);
 }
 
-.welcomeContainer {
-    display: flex;
-    flex-direction: row;
-    height: 80vh;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
+/* 
+    ====================
+      Home About Info 
+  ======================== 
+ 
+*/
 
 .about {
     flex-direction: column;
@@ -46,6 +85,7 @@ body {
     padding-top: 15rem;
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
 }
 
 .about button {
@@ -63,26 +103,61 @@ body {
     margin: auto;
 }
 
+
+
+
+/* 
+    ====================
+        Weather Card 
+  ======================== 
+ 
+*/
+
+#weatherDiv {
+    width: 50vh;
+}
+
+#card {
+    position: relative;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: row;
+    min-width: 0;
+    word-wrap: break-word;
+    justify-content: space-around;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 2rem;
+    align-items: center;
+}
+
+#timeAndTemp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#iconStatus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .container--weather {
-    border: 1px solid black;
     /* width: 30%; */
     /* height: 50%; */
     text-align: center;
-    background-color: RGB(0,138,198);
     align-content: start;
-    justify-content: start;
+    color: white;
 }
 
-/* .container--weather:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.7);
-} */
-
+/* 
+    ====================
+        Tracker Page 
+  ======================== 
+ 
+*/
 
 #trackerPage {
     padding-top: 95px;
@@ -106,93 +181,17 @@ body {
     max-height: 40vh;
 }
 
-.split1{
-    height: 6rem;
-    width: 100%;
-    background-color: RGB(0,138,198);
-}
 
-.split2{
-    height: 6rem;
-    width: 100%;
-    background-color: RGB(255,165,43);
-}
-.split3{
-    height: 6rem;
-    width: 100%;
-    background-color: RGB(249,103,40);
-}
-
-.split4 {
-    height: 1rem;
-    width: 100%;
-    background-color: black;
-}
-
-.nav-item {
-    display: flex;
-    justify-content: center;
-}
-
-
-#weatherDiv {
-    background-color: RGB(0,138,198);
-    width: 50vh;
-    border-radius: 10px;
-}
-
-#card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: row;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #e0d6d5;
-    background-clip: border-box;
-    border-radius: .25rem;
-    justify-content: space-evenly;
-    text-align: center;
-    padding-top: 10px;
-}
-
-#weatherNav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 24px;
-    margin: 0 0 0;
-    height: 2rem;
-    padding-top: 1rem;
-    border-bottom: 1px solid black;
-}
-
-#timeAndTemp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#iconStatus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#trainPage{
-    padding-top: 95px;
-}
-.about {
-    text-align: center;
-}
-
+/* 
+    ====================
+        Train Page 
+  ======================== 
+ 
+*/
 
 .trainUpdates {
     display: grid;
     grid-template-columns: 75% 1fr;
-
     margin: 30px;
 }
 
@@ -238,6 +237,13 @@ a:hover {
 }
 
 
+/* 
+    ====================
+          Footer  
+  ======================== 
+ 
+*/
+
 footer {
     border-top: 3px solid black;
     background-color: darkgrey;
@@ -253,6 +259,44 @@ footer li {
     width: 260px;
     margin-left:3px;
 }
+
+/* 
+    ====================
+        Page Splits  
+  ======================== 
+ 
+*/
+
+.split1{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(0,138,198);
+}
+
+.split2{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(255,165,43);
+}
+.split3{
+    height: 6rem;
+    width: 100%;
+    background-color: RGB(249,103,40);
+}
+
+.split4 {
+    height: 1rem;
+    width: 100%;
+    background-color: black;
+}
+
+/* 
+    ====================
+        Media Query  
+  ======================== 
+ 
+*/
+
 @media (max-width: 768px) {
     footer li{
         width: 400px;
