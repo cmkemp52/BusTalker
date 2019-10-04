@@ -23,7 +23,7 @@ body {
 
 /* 
     ====================
-    Navigation
+        Navigation
     ======================== 
     
     */
@@ -55,7 +55,7 @@ body {
 
 .home-background {
     background-image: url('../images/busStop.jpg');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     padding-right: 0;
@@ -68,7 +68,7 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    bottom: 0;
+    bottom: -8px; 
     background: rgba(0,0,0,0.7);
 }
 
@@ -82,7 +82,7 @@ body {
 .about {
     flex-direction: column;
     width: 60%;
-    padding-top: 15rem;
+    padding-top: 20rem;
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -91,7 +91,7 @@ body {
 .about button {
     border: 1px solid black;
     border-radius: 100px;
-    background-color: black;
+    background-color: RGB(0,138,198);
     margin-top: 1rem;
     width: 20%;
     height: 2rem;
@@ -103,7 +103,9 @@ body {
     margin: auto;
 }
 
-
+.about a {
+    color: black
+}
 
 
 /* 
@@ -271,6 +273,7 @@ footer li {
     height: 6rem;
     width: 100%;
     background-color: RGB(0,138,198);
+    margin-top: 3px;
 }
 
 .split2{
@@ -308,6 +311,13 @@ footer li {
     .trainUpdates {
         grid-template-columns: 1fr;
     }
+    .about {
+        padding-left: 250px;
+        width: 100%
+    }
+    .about button {
+        width: 8rem;
+    }
 }
 @media screen and (min-width: 768px) {
     #trackerPage{
@@ -326,5 +336,14 @@ footer li {
     }
     #tweets {
         margin-right: 10px;
+    }
+}
+
+@media (max-width: 376px) {
+    .about{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
     }
 }
