@@ -8,16 +8,20 @@
 */
 
 :root{
-    --blue: RGB(186, 184, 184);
-    --yellow: RGB(156, 154, 154);
-    --orange: RGB(122, 121, 121);
+    --blue: RGB(0, 140, 204);
+    --yellow: RGB(255, 179, 0);
+    --orange: RGB(255, 117, 0);
+    --darkGray: RGB(186, 184, 184);
+    --gray: RGB(156, 154, 154);
+    --lightGray: RGB(122, 121, 121);
+
 }
 .container{
     max-width: 100%;
 }
 body {
     /* grid-gap: 20px 20px; */
-    background: linear-gradient(135deg, var(--orange), var(--yellow), var(--blue));
+    background: linear-gradient(135deg, var(--lightGray), var(--gray), var(--darkGray));
 }
 
 
@@ -28,14 +32,18 @@ body {
     
     */
     
-    .nav {
+    /* .nav {
         display: flex;
         justify-content: center;
+    } */
+    #navbarNav {
+        /* display: flex; */
+        justify-content: flex-end;
     }
     
     .nav-item {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
     }
     
     
@@ -193,7 +201,7 @@ body {
     padding-top: 95px;
     display: grid;
     grid-template-columns: 75% 1fr;
-    margin: 30px;
+    margin: 20px;
 }
 
 #trainSelectForm > .button {
@@ -281,18 +289,18 @@ footer li {
 .split1{
     height: 6rem;
     width: 100%;
-    background-color: RGB(0,138,198);
+    background-color: var(--blue);
 }
 
 .split2{
     height: 6rem;
     width: 100%;
-    background-color: RGB(255,165,43);
+    background-color: var(--yellow);
 }
 .split3{
     height: 6rem;
     width: 100%;
-    background-color: RGB(249,103,40);
+    background-color: var(--orange);
 }
 
 .split4 {
@@ -315,6 +323,13 @@ footer li {
     }
     .trainUpdates {
         grid-template-columns: 1fr;
+        /* overflow-wrap: break-word; */
+    }
+    .container--train {
+        grid-template-columns: 40% repeat(3, 1fr);
+    }
+    #arrivalTime {
+        display: none;
     }
 
 }
