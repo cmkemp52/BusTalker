@@ -231,15 +231,22 @@ body {
   ======================== 
  
 */
-
-#buttonDiv{
+#fullMapSchedule{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0;
+    /* justify-content: space-around; */
+    /* justify-items: space-around; */
+    border: 2px solid black;
+}
+.buttonDiv{
     width:100%;
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
 }
 
-#scheduleButton {
+.scheduleButton {
     background-color: var(--yellow);
     color: var(--blue);
     font-weight: bold;
