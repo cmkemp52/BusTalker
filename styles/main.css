@@ -348,6 +348,7 @@ footer li {
     }
     .about button {
         width: 8rem;
+        height: auto;
     }
     #fullMapSchedule{
         display: grid;
