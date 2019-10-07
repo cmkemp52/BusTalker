@@ -118,7 +118,7 @@ function updateMap(){
             chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: false,
                 colorSet: 'martaColors',
-                backgroundColor: "#9E9C9C",
+                backgroundColor: "#396073",
                 title: {
                     text: "How late Marta is running"
                 },
@@ -277,3 +277,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+
+
