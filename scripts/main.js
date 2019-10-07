@@ -184,10 +184,10 @@ function addIcon(icon) {
       }
 }
 
-function getWeather(icon) {
-    const URL = `https://api.darksky.net/forecast/1010d61071e3e5e3e99eed847a82272c/33.7490,-84.3880`;
+function getWeather() {
+    const url = `https://api.darksky.net/forecast/1010d61071e3e5e3e99eed847a82272c/33.7490,-84.3880`;
 
-    get(URL).then(function(response) {
+    get(url).then(function(response) {
         addTemp(response.currently.temperature);
         addPrecipitation(response.currently.precipProbability);
         addIcon(response.minutely.icon);
