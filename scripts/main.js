@@ -10,12 +10,12 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 
-updateMap();
+updateAPI();
 setInterval(function(){
-    updateMap();
+    updateAPI();
 },5000);
 
-function updateMap(){
+function updateAPI(){
     fetch("http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
         .then(function(jsondata){
@@ -32,84 +32,7 @@ function updateMap(){
                 if(jsondata[bus].ADHERENCE ==0){
                     busOnTime++;
                 }
-                switch(jsondata[bus].DIRECTION){
-                    case "Northbound":
-                            mymap.eachLayer(function(tlayer){
-                                if(tlayer._icon != undefined){
-                                    if(tlayer._popup._content.includes(`Bus ID:${jsondata[bus].VEHICLE}`)){
-                                        mymap.removeLayer(tlayer);
-                                    }
-                                }});
-                            let nIcon = L.icon({iconUrl:"images/busnorth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
-                            marker = L.marker([jsondata[bus].LATITUDE, jsondata[bus].LONGITUDE],{icon:nIcon}).addTo(mymap);
-                            if(jsondata[bus].ADHERENCE >0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${jsondata[bus].ADHERENCE} minute\(s\) ahead of schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE <0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${Math.abs(jsondata[bus].ADHERENCE)} minute\(s\) behind schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE ==0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently on schedule`);
-                            }
-                            break;
-                    case "Southbound":
-                            mymap.eachLayer(function(tlayer){
-                                if(tlayer._icon != undefined){
-                                    if(tlayer._popup._content.includes(`Bus ID:${jsondata[bus].VEHICLE}`)){
-                                        mymap.removeLayer(tlayer);
-                                    }
-                            }});
-                            let sIcon = L.icon({iconUrl:"images/bussouth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
-                            marker = L.marker([jsondata[bus].LATITUDE, jsondata[bus].LONGITUDE],{icon:sIcon}).addTo(mymap);
-                            if(jsondata[bus].ADHERENCE >0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${jsondata[bus].ADHERENCE} minute\(s\) ahead of schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE <0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${Math.abs(jsondata[bus].ADHERENCE)} minute\(s\) behind schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE ==0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently on schedule`);
-                            }
-                            break;
-                    case "Eastbound":
-                            mymap.eachLayer(function(tlayer){
-                                if(tlayer._icon != undefined){
-                                    if(tlayer._popup._content.includes(`Bus ID:${jsondata[bus].VEHICLE}`)){
-                                        mymap.removeLayer(tlayer);
-                                    }
-                            }});
-                            let eIcon = L.icon({iconUrl:"images/buseast.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
-                            marker = L.marker([jsondata[bus].LATITUDE, jsondata[bus].LONGITUDE],{icon:eIcon}).addTo(mymap);
-                            if(jsondata[bus].ADHERENCE >0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${jsondata[bus].ADHERENCE} minute\(s\) ahead of schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE <0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${Math.abs(jsondata[bus].ADHERENCE)} minute\(s\) behind schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE ==0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently on schedule`);
-                            }
-                            break;
-                    case "Westbound":
-                            mymap.eachLayer(function(tlayer){
-                                if(tlayer._icon != undefined){
-                                    if(tlayer._popup._content.includes(`Bus ID:${jsondata[bus].VEHICLE}`)){
-                                        mymap.removeLayer(tlayer);
-                                    }
-                            }});
-                            let wIcon = L.icon({iconUrl:"images/buswest.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
-                            marker = L.marker([jsondata[bus].LATITUDE, jsondata[bus].LONGITUDE],{icon:wIcon}).addTo(mymap);
-                            if(jsondata[bus].ADHERENCE >0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${jsondata[bus].ADHERENCE} minute\(s\) ahead of schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE <0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently ${Math.abs(jsondata[bus].ADHERENCE)} minute\(s\) behind schedule`);
-                            }
-                            if(jsondata[bus].ADHERENCE ==0){
-                                marker.bindPopup(`<b>Bus Rt: ${jsondata[bus].ROUTE} Bus ID:${jsondata[bus].VEHICLE}</b><br> Currently on schedule`);
-                            }
-                            break;
-                }
+                busAdd(jsondata[bus]);
             }
             busLatePercent = (busLate/(busLate+busEarly+busOnTime))*100
             busEarlyPercent = (busEarly/(busLate+busEarly+busOnTime))*100
@@ -139,6 +62,41 @@ function updateMap(){
         .catch(err=>console.log(err));
 }
 
+function busAdd(bus){
+    mymap.eachLayer(function(tlayer){
+        if(tlayer._icon != undefined){
+            if(tlayer._popup._content.includes(`Bus ID:${bus.VEHICLE}`)){
+                mymap.removeLayer(tlayer);
+            }
+        }});
+    switch(bus.DIRECTION){
+        case "Northbound":
+                let nIcon = L.icon({iconUrl:"images/busnorth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
+                marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:nIcon}).addTo(mymap);
+                break;
+        case "Southbound":
+                let sIcon = L.icon({iconUrl:"images/bussouth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
+                marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:sIcon}).addTo(mymap);
+                break;
+        case "Eastbound":
+                let eIcon = L.icon({iconUrl:"images/buseast.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
+                marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:eIcon}).addTo(mymap);
+                break;
+        case "Westbound":
+                let wIcon = L.icon({iconUrl:"images/buswest.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
+                marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:wIcon}).addTo(mymap);
+                break;
+        }
+        if(bus.ADHERENCE >0){
+            marker.bindPopup(`<b>Bus Rt: ${bus.ROUTE} Bus ID:${bus.VEHICLE}</b><br> Currently ${bus.ADHERENCE} minute\(s\) ahead of schedule`);
+        }
+        if(bus.ADHERENCE <0){
+            marker.bindPopup(`<b>Bus Rt: ${bus.ROUTE} Bus ID:${bus.VEHICLE}</b><br> Currently ${Math.abs(bus.ADHERENCE)} minute\(s\) behind schedule`);
+        }
+        if(bus.ADHERENCE ==0){
+            marker.bindPopup(`<b>Bus Rt: ${bus.ROUTE} Bus ID:${bus.VEHICLE}</b><br> Currently on schedule`);
+        }
+}
 ////////////////////////////////////
 //// Twitter and Icon Resizing ////
 //////////////////////////////////
