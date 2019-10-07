@@ -59,6 +59,7 @@ body {
     height: 80vh;
     flex-wrap: wrap;
     align-items: flex-start;
+    min-height: 500px;
 }
 
 .home-background {
@@ -85,7 +86,6 @@ body {
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
-    background-color: rgba(0,0,0,0.7);
 }
 
 .about button {
@@ -133,7 +133,7 @@ body {
     align-items: center;
 }
 
-#timeAndTemp {
+#stats {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -201,7 +201,7 @@ body {
 .subtitle {
     color: white;
     font-weight: bold;
-
+    font-size: 3rem;
 }
 
 #trainSelectForm > .button {
@@ -291,11 +291,11 @@ footer {
 footer ul{
     width: 100%;
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap:wrap;
 }
 footer li {
-    width: 260px;
+    width: auto;
     margin-left:3px;
 }
 
@@ -337,9 +337,17 @@ footer li {
 */
 
 @media (max-width: 768px) {
+    footer ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
     footer li{
-        width: 400px;
+        width: auto;
         font-size: 20px;
+        justify-content: flex-start;
+        /* text-align: center; */
     }
     .trainUpdates {
         grid-template-columns: 1fr;

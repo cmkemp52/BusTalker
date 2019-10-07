@@ -43,7 +43,7 @@ function updateAPI(){
                 colorSet: 'martaColors',
                 backgroundColor: "#396073",
                 title: {
-                    text: "How late Marta is running"
+                    text: "Marta by the Minute"
                 },
                 data: [{
                     type: "pie",
@@ -121,39 +121,16 @@ $( window ).resize(function() {
 
 function addTemp(temp) {
     const temperatureElement = document.createElement('p');
-    temperatureElement.innerHTML = `<b>${temp.toFixed(0)} &#7506 F</b>`;
+    temperatureElement.innerHTML = `<b>${temp.toFixed(0)}&#730;F</b>`;
     temperatureElement.setAttribute('style', 'font-size: 40px; font-weight: bold;'); 
-    timeAndTemp.append(temperatureElement);
-}
-        
-
-function addSummary(summary) {
-    const summaryElement = document.createElement('p');
-    summaryElement.innerHTML = `${summary}`;
-    summaryElement.setAttribute('style', 'font-weight: bold; font-size: 1rem;');
-    iconStatus.append(summaryElement);
+    stats.append(temperatureElement);
 }
 
-function addTime(time) {
-    time = moment.unix(time).format('h:mm a');
-    const timeElement = document.createElement('p');
-    timeElement.innerHTML = `<b>NOW ${time}<b>`;
-    timeElement.setAttribute('style', 'opacity: .5; font-size: 1rem;') 
-    iconStatus.append(timeElement);
-}
-
-function addDate(date) {
-    date = moment.unix(date).format('LL');
-    const dateElement = document.createElement('p');
-    dateElement.innerHTML = `${date}`;
-    dateElement.setAttribute('style', 'text-decoration: underline');
-    timeAndTemp.append(dateElement);
-}
 function addPrecipitation(precipitation) {
     const precipitationElement = document.createElement('p');
     precipitationElement.innerHTML = `Chance of Rain: ${precipitation} &#37;`;
     precipitationElement.setAttribute('style', 'opacity: .5; font-size: 1rem;') 
-    timeAndTemp.append(precipitationElement);
+    stats.append(precipitationElement);
 }
 
 function addIcon(icon) {
@@ -186,7 +163,7 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "sleet":
-            iconElement.innerHTML = `<img src="weatherIcons/snow.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/sleet.png">`;
             iconStatus.append(iconElement);
           break;
         case "snow":
@@ -194,11 +171,11 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "wind":
-            iconElement.innerHTML = `<img src="weatherIcons/storm.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/wind.png">`;
             iconStatus.append(iconElement);
           break;
         case "fog":
-            iconElement.innerHTML = `<img src="images/cloudy.png">`;
+            iconElement.innerHTML = `<img src="images/foggy.png">`;
             iconStatus.append(iconElement);
           break;
         default:
@@ -211,13 +188,9 @@ function getWeather(icon) {
     const URL = `https://api.darksky.net/forecast/1010d61071e3e5e3e99eed847a82272c/33.7490,-84.3880`;
 
     get(URL).then(function(response) {
-        // addTime(response.currently.time);
-        // addDate(response.currently.time);
         addTemp(response.currently.temperature);
         addPrecipitation(response.currently.precipProbability);
         addIcon(response.minutely.icon);
-        // addSummary(response.hourly.summary);
-        console.log(response);
     });
 }
 getWeather();
