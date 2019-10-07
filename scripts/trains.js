@@ -21,14 +21,14 @@ function addTrains(trains) {
     // filteredTrains = trains.filter(train => train.STATION === "CHAMBLEE STATION")
     // && train.LINE === "RED" && train.DIRECTION === "S")
         trainDiv.innerHTML = "<p><strong>Station</strong></p><p><strong>Line</strong></p><p><strong>Dir.</strong></p><p id='arrivalTime'><strong>Arrival Time</strong></p><p><strong>Wait Time</strong></p>"
-        trainList =  trains.map(train => {
+        let trainList =  trains.map(train => {
 
-        stationLi = document.createElement("div");
-        lineLi = document.createElement("div");
-        directionLi = document.createElement("div");
-        arrivalTimeLi = document.createElement("div");
-        arrivalTimeLi.setAttribute('id', 'arrivalTime')
-        waitTimeLi = document.createElement("div");
+        let stationLi = document.createElement("div");
+        let lineLi = document.createElement("div");
+        let directionLi = document.createElement("div");
+        let arrivalTimeLi = document.createElement("div");
+        arrivalTimeLi.setAttribute('id', 'arrivalTime');
+        let waitTimeLi = document.createElement("div");
 
         trainDiv.append(stationLi);
         trainDiv.append(lineLi);
@@ -48,11 +48,11 @@ function addTrains(trains) {
 
 function addStationList(trains) {
     stationSelect.innerHTML = "<option>All Stations</option>"
-    stationList = trains.map(train => {
+    let stationList = trains.map(train => {
         return train.STATION;
     });
 
-    filteredStationList = [...new Set(stationList)].sort();
+    let filteredStationList = [...new Set(stationList)].sort();
 
     filteredStationList.forEach(station => {
         stationName = document.createElement("option");
