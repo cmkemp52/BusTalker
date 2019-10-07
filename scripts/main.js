@@ -175,11 +175,11 @@ function addIcon(icon) {
             iconStatus.append(iconElement);
           break;
         case "fog":
-            iconElement.innerHTML = `<img src="images/foggy.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/foggy.png">`;
             iconStatus.append(iconElement);
           break;
         default:
-            iconElement.innerHTML = `<img src="images/sun.png">`;
+            iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
       }
 }
