@@ -43,9 +43,11 @@ function updateAPI(){
                 colorSet: 'martaColors',
                 backgroundColor: "#396073",
                 title: {
+                    fontColor:"white",
                     text: "Marta by the Minute"
                 },
                 data: [{
+                    indexLabelFontColor: "white",
                     type: "pie",
                     startAngle: 240,
                     yValueFormatString: "##0.00\"%\"",
