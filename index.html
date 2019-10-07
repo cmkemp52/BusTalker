@@ -30,7 +30,7 @@
               <a class="nav-link" href="#split2">Trains</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#split3">Schedule</a>
+            <a class="nav-link" href="#split3">Routes</a>
           </li>
           </ul>
         </div>
@@ -56,7 +56,7 @@
                     <h1><b>Bus Talker</b></h1>
                     <p>Instant Marta Bus and Rail Tracking</p>
                     <hr>
-                    <p><button><a href="#trackerPage"><b>Start Tracking</b></a></button></p>
+                    <a href="#split1"><p><button><b>Start Tracking</b></button></p></a>
                 </div>
             </div>
         </div>
@@ -101,18 +101,21 @@
             <!------ Bus Routes and Schedules ------>
 
           <div id="fullMapSchedule">
-              <img id= "map1" src="images/trainMap.jpg"/>
-              
-              <img id= "map2" src="images/busMap.png"/>
-              <div class="buttonDiv">
-                  <a href= "https://www.itsmarta.com/bus-routes.aspx" class="scheduleButton">All bus routes and schedules</a>
-              </div>
-              <div class="buttonDiv">
+            <div class="map">
+                  <img id= "map2" src="images/busMap.png"/>
+            </div>
+            <div class="buttonDiv" id="buttonDiv1">
+                <a href= "https://www.itsmarta.com/bus-routes.aspx" class="scheduleButton">All bus routes and schedules</a>
+            </div>
+            
+            <div class="map">
+                <img id= "map1" src="images/trainMap.jpg"/>
+            </div>
+            <div class="buttonDiv" id="buttonDiv2">
               <a href= "https://www.itsmarta.com/train-stations-and-schedules.aspx" class="scheduleButton">All train stations and schedules</a>
-              </div>
+            </div>
           </div>
         <div class="split4"></div>
-
         <!----- Footer ----->
 
         <footer>
@@ -131,9 +134,9 @@
                 <li class="nav-item">
                   <p>MARTA Mobility:<br> 404-848-582</p>
                 </li>
-              </ul>
-            </div>
-          </nav>
+            </ul>
+            
+            </nav>
         </footer>
     </container>
     </div>
