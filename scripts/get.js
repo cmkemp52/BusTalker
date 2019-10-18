@@ -3,7 +3,7 @@
 /////////////////////////////
 
 function get(url) {
-    return fetch('https://my-little-cors-proxy.herokuapp.com/' + url)
+    return fetch(url)
     .then(function(response) {
         return response.json();
     })

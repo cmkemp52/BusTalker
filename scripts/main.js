@@ -16,7 +16,7 @@ setInterval(function(){
 },5000);
 
 function updateAPI(){
-    fetch("https://my-little-cors-proxy.herokuapp.com/http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
+    fetch("http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
         .then(function(jsondata){
             let busLate = 0;
@@ -143,7 +143,7 @@ function addIcon(icon) {
         case "clear-day":
             iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "clear-night":
             iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
@@ -151,39 +151,39 @@ function addIcon(icon) {
         case "partly-cloudy-day":
             iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "clear-partly-cloudy-night":
             iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "cloudy":
             iconElement.innerHTML = `<img src="weatherIcons/cloudy.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "rain":
             iconElement.innerHTML = `<img src="weatherIcons/cloudyrain.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "sleet":
             iconElement.innerHTML = `<img src="weatherIcons/sleet.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "snow":
             iconElement.innerHTML = `<img src="weatherIcons/snow.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "wind":
             iconElement.innerHTML = `<img src="weatherIcons/wind.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         case "fog":
             iconElement.innerHTML = `<img src="weatherIcons/foggy.png">`;
             iconStatus.append(iconElement);
-          break;
+            break;
         default:
             iconElement.innerHTML = `<img src="weatherIcons/sunny.png">`;
             iconStatus.append(iconElement);
-      }
+    }
 }
 
 function getWeather() {
