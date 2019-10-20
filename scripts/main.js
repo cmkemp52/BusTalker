@@ -3,7 +3,6 @@
 //////////////////////////////
 
 //creates map using mapbox in leaflet
-
 const mymap = L.map('mapDiv',{center: [33.75, -84.38], zoom: 12, minZoom:12, maxZoom:16, scrollWheelZoom: false});
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY21rZW1wNTIiLCJhIjoiY2sxN3czcWZ0MWw4aDNicWQ5ZGk3ZGRiciJ9.TmrrAvuGokXxLMhoa96krg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -11,6 +10,12 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 	id: 'mapbox.streets',
 }).addTo(mymap);
 
+//centers map on user if user location available
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(user=>{
+        mymap.setView([user.coords.latitude, user.coords.longitude], 14);
+    });
+}
 
 
 //defining images for map icons
@@ -85,7 +90,6 @@ function updateAPI(){
 }
 //updates user location on map
 function userAdd(user){
-    console.log(user);
     userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
     userMarker.bindPopup("Your location");
 }
