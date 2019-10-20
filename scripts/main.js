@@ -2,6 +2,8 @@
 //// Bus Map Functionality ////
 //////////////////////////////
 
+//creates map using mapbox in leaflet
+
 const mymap = L.map('mapDiv',{center: [33.75, -84.38], zoom: 12, minZoom:12, maxZoom:16, scrollWheelZoom: false});
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY21rZW1wNTIiLCJhIjoiY2sxN3czcWZ0MWw4aDNicWQ5ZGk3ZGRiciJ9.TmrrAvuGokXxLMhoa96krg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -10,15 +12,29 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 
+
+//defining images for map icons
+const nIcon = L.icon({iconUrl:"images/busnorth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]}),
+    sIcon = L.icon({iconUrl:"images/bussouth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]}),
+    eIcon = L.icon({iconUrl:"images/buseast.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]}),
+    wIcon = L.icon({iconUrl:"images/buswest.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
+
+//updates bus map every 5 seconds
 updateAPI();
 setInterval(function(){
     updateAPI();
 },5000);
 
 function updateAPI(){
+    //Adds user location to map if available
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(userAdd);
+    }
+    //gets bus data
     fetch("https://my-little-cors-proxy.herokuapp.com/http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
         .then(function(jsondata){
+            //Checks how many buses are late, early, on time
             let busLate = 0;
             let busEarly = 0;
             let busOnTime = 0;
@@ -32,12 +48,16 @@ function updateAPI(){
                 if(jsondata[bus].ADHERENCE ==0){
                     busOnTime++;
                 }
+                //removes and adds buses to map
                 busAdd(jsondata[bus]);
             }
+            //turns bus data into percentages
             busLatePercent = (busLate/(busLate+busEarly+busOnTime))*100
             busEarlyPercent = (busEarly/(busLate+busEarly+busOnTime))*100
             busOnTimePercent = (busOnTime/(busLate+busEarly+busOnTime))*100
+            //gives bus chart Marta colors
             CanvasJS.addColorSet("martaColors",["#0092D0","#FDBE43","#FF7500"]);
+            //Creates chart using canvasjs, populates chart with bus data
             chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: false,
                 colorSet: 'martaColors',
@@ -63,32 +83,38 @@ function updateAPI(){
         })
         .catch(err=>console.log(err));
 }
+//updates user location on map
+function userAdd(user){
+    console.log(user);
+    userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
+    userMarker.bindPopup("Your location");
+}
 
+//updates bus location on map
 function busAdd(bus){
+    //Removes bus from map
     mymap.eachLayer(function(tlayer){
         if(tlayer._icon != undefined){
             if(tlayer._popup._content.includes(`Bus ID:${bus.VEHICLE}`)){
                 mymap.removeLayer(tlayer);
             }
         }});
+    //adds bus to map, image based on bus direction
     switch(bus.DIRECTION){
         case "Northbound":
-                let nIcon = L.icon({iconUrl:"images/busnorth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
                 marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:nIcon}).addTo(mymap);
                 break;
         case "Southbound":
-                let sIcon = L.icon({iconUrl:"images/bussouth.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
                 marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:sIcon}).addTo(mymap);
                 break;
         case "Eastbound":
-                let eIcon = L.icon({iconUrl:"images/buseast.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
                 marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:eIcon}).addTo(mymap);
                 break;
         case "Westbound":
-                let wIcon = L.icon({iconUrl:"images/buswest.png",iconSize:[50,50],iconAnchor:[25,25],popupAnchor:[0,-10]});
                 marker = L.marker([bus.LATITUDE, bus.LONGITUDE],{icon:wIcon}).addTo(mymap);
                 break;
         }
+        //gives bus icons helpful data when you select them
         if(bus.ADHERENCE >0){
             marker.bindPopup(`<b>Bus Rt: ${bus.ROUTE} Bus ID:${bus.VEHICLE}</b><br> Currently ${bus.ADHERENCE} minute\(s\) ahead of schedule`);
         }
