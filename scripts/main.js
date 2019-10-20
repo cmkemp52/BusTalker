@@ -16,7 +16,7 @@ setInterval(function(){
 },5000);
 
 function updateAPI(){
-    fetch("http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
+    fetch("https://my-little-cors-proxy.herokuapp.com/http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
         .then(data=>data.json())
         .then(function(jsondata){
             let busLate = 0;
