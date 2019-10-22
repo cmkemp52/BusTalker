@@ -90,6 +90,12 @@ function updateAPI(){
 }
 //updates user location on map
 function userAdd(user){
+    mymap.eachLayer(function(tlayer){
+        if(tlayer._icon != undefined){
+            if(tlayer._popup._content.includes("Your location")){
+                mymap.removeLayer(tlayer);
+            }
+        }});
     userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
     userMarker.bindPopup("Your location");
 }
