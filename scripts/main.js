@@ -14,6 +14,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(user=>{
         mymap.setView([user.coords.latitude, user.coords.longitude], 14);
+        userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
+        userMarker.bindPopup("Your location");
     });
 }
 
@@ -33,7 +35,7 @@ setInterval(function(){
 function updateAPI(){
     //Adds user location to map if available
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(userAdd);
+        navigator.geolocation.getCurrentPosition(userMove);
     }
     //gets bus data
     fetch("https://my-little-cors-proxy.herokuapp.com/http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus")
@@ -89,16 +91,16 @@ function updateAPI(){
         .catch(err=>console.log(err));
 }
 //updates user location on map
-function userAdd(user){
+function userMove(user){
     mymap.eachLayer(function(tlayer){
         if(tlayer._icon != undefined){
             if(tlayer._popup._content.includes("Your location")){
-                mymap.removeLayer(tlayer);
+                tlayer.setLatLng([user.coords.latitude, user.coords.longitude])
             }
         }});
-    userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
-    userMarker.bindPopup("Your location");
+    
 }
+
 
 //updates bus location on map
 function busAdd(bus){
