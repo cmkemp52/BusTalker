@@ -10,9 +10,10 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 	id: 'mapbox.streets',
 }).addTo(mymap);
 
-//centers map on user if user location available
+//centers map on user if user location available and user in Atlanta
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(user=>{
+        if(user.coords.latitude > 33.5 && user.coords.latitude < 33.9 && user.coords.longitute > 84 && user.coords.longitute < 84.8)
         mymap.setView([user.coords.latitude, user.coords.longitude], 14);
         userMarker = L.marker([user.coords.latitude, user.coords.longitude]).addTo(mymap);
         userMarker.bindPopup("Your location");
